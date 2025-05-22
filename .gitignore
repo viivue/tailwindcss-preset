@@ -1,8 +1,6 @@
 # 👉 node modules (không cần push)
 node_modules/
 
-# 👉 Thư mục build ra
-dist/
 
 # 👉 File tạm của hệ thống
 .DS_Store

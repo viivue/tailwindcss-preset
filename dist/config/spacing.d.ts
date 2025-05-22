@@ -1,0 +1,131 @@
+/**
+ * Base spacing
+ *
+ * It is recommended to consolidate your spacings into these predefined values
+ * for consistency between projects
+ *
+ * If it is required, you can freely update this list.
+ */
+export declare const baseSpacing: any;
+export declare const responsive: {
+    md: {
+        0: string;
+        1: string;
+        2: string;
+        4: string;
+        6: string;
+        8: string;
+        10: string;
+        12: string;
+        14: string;
+        16: string;
+        20: string;
+        24: string;
+        28: string;
+        32: string;
+        36: string;
+        40: string;
+        44: string;
+        48: string;
+        52: string;
+        56: string;
+        60: string;
+        64: string;
+        72: string;
+        80: string;
+        88: string;
+        96: string;
+        104: string;
+        112: string;
+        120: string;
+        128: string;
+        136: string;
+        144: string;
+        152: string;
+        160: string;
+        168: string;
+        176: string;
+        184: string;
+        192: string;
+    };
+    sm: {
+        0: string;
+        1: string;
+        2: string;
+        4: string;
+        6: string;
+        8: string;
+        10: string;
+        12: string;
+        14: string;
+        16: string;
+        20: string;
+        24: string;
+        28: string;
+        32: string;
+        36: string;
+        40: string;
+        44: string;
+        48: string;
+        52: string;
+        56: string;
+        60: string;
+        64: string;
+        72: string;
+        80: string;
+        88: string;
+        96: string;
+        104: string;
+        112: string;
+        120: string;
+        128: string;
+        136: string;
+        144: string;
+        152: string;
+        160: string;
+        168: string;
+        176: string;
+        184: string;
+        192: string;
+    };
+    xs: {
+        0: string;
+        1: string;
+        2: string;
+        4: string;
+        6: string;
+        8: string;
+        10: string;
+        12: string;
+        14: string;
+        16: string;
+        20: string;
+        24: string;
+        28: string;
+        32: string;
+        36: string;
+        40: string;
+        44: string;
+        48: string;
+        52: string;
+        56: string;
+        60: string;
+        64: string;
+        72: string;
+        80: string;
+        88: string;
+        96: string;
+        104: string;
+        112: string;
+        120: string;
+        128: string;
+        136: string;
+        144: string;
+        152: string;
+        160: string;
+        168: string;
+        176: string;
+        184: string;
+        192: string;
+    };
+};
