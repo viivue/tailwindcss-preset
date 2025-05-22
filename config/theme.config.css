@@ -63,22 +63,6 @@
 @tailwind components;
 
 @layer components {
-    .vii-has-sep {--sep-color:#d9d9d9;}
-    .txt_color_white .vii-has-sep {--sep-color:rgba(255, 255, 255, .4);}
-    .vii-has-sep > *:not(:last-child) {position:relative; padding-right:16px;}
-    .vii-has-sep > *:not(:last-child):before {
-        content:""; position:absolute; right:0; top:50%;
-        transform:translateY(-50%);
-        height:16px; width:1px; background:#d9d9d9;
-        display:block;
-    }
-    .vii-has-sep--slash > *:not(:last-child) {padding-right:8px;}
-    .vii-has-sep--slash > *:not(:last-child):before {
-        transform:translate(1px, -50%) rotate(15deg);
-        width:2px; border-radius:2px;
-    }
-
-
     /* Visibility Classes */
     .hidden-mobile, .hidden-tablet-v, .hidden-tablet-h, .hidden-touch-devices {display:block;}
     .show-mobile, .show-tablet-v, .show-tablet-h, .show-touch-devices {display:none;}

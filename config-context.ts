@@ -1,6 +1,6 @@
-let sharedConfig = {};
+let sharedConfig: any = {};
 
-export function setConfig(config) {
+export function setConfig(config: any) {
   sharedConfig = config;
 }
 

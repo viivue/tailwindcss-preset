@@ -8,7 +8,7 @@
  *
  * If it is required, you can freely update this list.
  */
-export const baseSpacing = {
+export const baseSpacing: any = {
     0: "0px",
     1: "1px",
     2: "2px",

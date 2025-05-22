@@ -1,10 +1,10 @@
-import {getVariable} from "../getVariable.mjs";
+import {getVariable} from "../getVariable";
 import { getConfig } from "../../config-context";
 
 
 
-export const getAutoResponsiveUtilities = (baseName) => {
-    const themeConfig = getConfig() || {};
+export const getAutoResponsiveUtilities = (baseName: string) => {
+    const themeConfig: any = getConfig() || {};
 
     const baseValues = themeConfig[baseName];
 
@@ -12,18 +12,18 @@ export const getAutoResponsiveUtilities = (baseName) => {
 
     const responsive = themeConfig[responsiveBaseName];
 
-    const responsiveOverrides = {};
+    const responsiveOverrides: any = {};
     const appliedOverrides = new Set();
 
     // Sort screen keys by their max value in descending order
     const sortedScreens = Object.entries(themeConfig.screens)
-        .filter(([, value]) => value.max)
-        .sort((a, b) => parseInt(b[1].max) - parseInt(a[1].max));
+        .filter(([, value]: any) => value.max)
+        .sort((a: any, b: any) => parseInt(b[1].max) - parseInt(a[1].max));
 
-    sortedScreens.forEach(([screenKey, screen]) => {
+    sortedScreens.forEach(([screenKey, screen]: any) => {
         const responsiveValues = responsive[screenKey];
         if(responsiveValues){
-            const overrides = Object.entries(responsiveValues).reduce((acc, [key, value]) => {
+            const overrides = Object.entries(responsiveValues).reduce((acc: any, [key, value]: any) => {
                 const override = `${key}:${value}`;
                 // Only add if the value is different from the default, key/value are different,
                 // and this override hasn't been applied in a larger breakpoint

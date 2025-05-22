@@ -1,0 +1,39 @@
+# 👉 node modules (không cần push)
+node_modules/
+
+# 👉 Thư mục build ra
+dist/
+
+# 👉 File tạm của hệ thống
+.DS_Store
+Thumbs.db
+
+# 👉 Output log / cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# 👉 VSCode / IDE configs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# 👉 TypeScript
+*.tsbuildinfo
+
+# 👉 Mac OS / Windows system
+ehthumbs.db
+Desktop.ini
+
+# 👉 Test snapshot (nếu có test)
+__snapshots__/
+
+# 👉 Local .env or secret config
+.env
+.env.local
+.env.*.local

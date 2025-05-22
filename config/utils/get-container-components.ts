@@ -2,12 +2,12 @@ import { getConfig } from "../../config-context";
 
 
 
-export const getContainerComponents = (theme) => {
-    const themePrefix = getConfig()?.prefix || "";
+export const getContainerComponents = (theme: any) => {
+    const themePrefix: any = getConfig()?.prefix || "";
     if(theme._container){
         const gapSideVar = `--${themePrefix}gap-side`;
-        const containerVars = {};
-        const containerClass = {};
+        const containerVars: any = {};
+        const containerClass: any = {};
         const gapContainer = 'theme(space.responsive-gap-container)';
         const containerProps = {
             position: 'relative',

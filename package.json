@@ -2,18 +2,31 @@
   "name": "my-tailwind-preset",
   "version": "1.0.0",
   "description": "Custom Tailwind CSS preset",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "commonjs",
-  "keywords": ["tailwind", "preset", "tailwindcss"],
+  "keywords": [
+    "tailwind",
+    "preset",
+    "tailwindcss"
+  ],
   "author": "Dan",
   "license": "MIT",
   "exports": {
     ".": "./index.js"
   },
   "dependencies": {
-    "tailwindcss": "^3.4.0",
     "@phucbm/tailwindcss-components": "^0.1.1",
     "@phucbm/tailwindcss-container-queries": "^0.1.1",
-    "@phucbm/tailwindcss-style-props": "^0.1.1"
+    "@phucbm/tailwindcss-style-props": "^0.1.1",
+    "tailwindcss": "^3.4.0"
+  },
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
   }
 }

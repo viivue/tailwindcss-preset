@@ -1,9 +1,9 @@
-import {configPropertyName} from "./config.mjs";
-import {baseSpacing} from "./spacing.mjs";
+import {configPropertyName} from "./config";
+import {baseSpacing} from "./spacing";
 import { getConfig } from "../config-context";
 
-export const getVariable = (baseName, key) => {
-    const themePrefix = getConfig().prefix || '';
+export const getVariable = (baseName: string, key: string) => {
+    const themePrefix = (getConfig() as any).prefix || '';
 
     const propertyName = configPropertyName[baseName];
 
@@ -11,11 +11,11 @@ export const getVariable = (baseName, key) => {
 }
 
 
-export const getFontSize = (key) => {
+export const getFontSize = (key: string) => {
     return `var(${getVariable('fontSize', key)})`;
 }
 
-export const getSpacing = (value) => {
+export const getSpacing = (value: any) => {
     if(!value){
         console.log(`WARNING: Value ${value} is invalid.`)
         return '/* invalid value, please check theme.config.spacing */';

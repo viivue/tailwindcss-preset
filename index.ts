@@ -1,20 +1,22 @@
 import { getConfig, setConfig } from "./config-context";
 
 // index.js
-const plugin = require("tailwindcss/plugin");
-const { themeConfigFunc } = require("./config/theme.config.mjs");
-const {
-  getAutoResponsiveBase,
-  getAutoResponsiveUtilities,
-  getContainerComponents,
-  getCustomCSSVariables,
-} = require("./config/utils");
-const { getFontWeightExtend } = require("./config/utils/get-font-weight-extend.mjs");
+import plugin from "tailwindcss/plugin";
+import { themeConfigFunc } from "./config/theme.config";
+import { getAutoResponsiveBase, getAutoResponsiveUtilities, getContainerComponents, getCustomCSSVariables } from "./config/utils";
+import { getFontWeightExtend } from "./config/utils/get-font-weight-extend";
+
+// @ts-ignore
+import containerQueries from "@phucbm/tailwindcss-container-queries";
+// @ts-ignore
+import styleProps from "@phucbm/tailwindcss-style-props";
+// @ts-ignore
+import components from "@phucbm/tailwindcss-components";
 
 export default function preset(config = {}) {
 
   setConfig(themeConfigFunc(config));
-  const themeConfig = getConfig();
+  const themeConfig: any = getConfig();
 
   return {
     theme: {
@@ -59,16 +61,16 @@ export default function preset(config = {}) {
         addUtilities(getAutoResponsiveUtilities("spacing"));
         addUtilities(getAutoResponsiveUtilities("fontSize"));
 
-        addComponents(getContainerComponents(_theme));
+        addComponents(getContainerComponents(_theme) as any);
 
-        Object.entries(themeConfig._variants).forEach(([key, value]) => {
+        Object.entries(themeConfig._variants).forEach(([key, value] : any) => {
           addVariant(key, value.toString());
         });
       }),
 
-      require("@phucbm/tailwindcss-container-queries"),
-      require("@phucbm/tailwindcss-style-props"),
-      require("@phucbm/tailwindcss-components"),
+      containerQueries,
+      styleProps,
+      components,
     ],
   };
 };

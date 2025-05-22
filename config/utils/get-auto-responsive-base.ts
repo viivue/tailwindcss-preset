@@ -1,6 +1,6 @@
 // import {themeConfig} from "../theme.config.mjs";
 import { getConfig } from "../../config-context";
-import {getVariable} from "../getVariable.mjs";
+import {getVariable} from "../getVariable";
 
 
 
@@ -19,13 +19,13 @@ import {getVariable} from "../getVariable.mjs";
  * @param postfix
  * @returns {{}}
  */
-export const getAutoResponsiveBase = (baseName, postfix = '') => {
-    const themeConfig = getConfig() || {};
+export const getAutoResponsiveBase = (baseName: string, postfix = '') => {
+    const themeConfig: any = getConfig() || {};
     const baseValues = themeConfig[baseName];
-    const names = {};
+    const names: any = {};
 
     // each base value will have a responsive variant
-    Object.entries(baseValues).forEach(([key, value]) => {
+    Object.entries(baseValues).forEach(([key, value] : any) => {
         // check if value is raw or reference to a variable
         const isVariable = value.startsWith('var(--');
 
