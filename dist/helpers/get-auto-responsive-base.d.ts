@@ -12,4 +12,4 @@
  * @param postfix
  * @returns {{}}
  */
-export declare const getAutoResponsiveBase: (baseName: string, postfix?: string) => any;
+export declare const getAutoResponsiveBase: (baseName: string, postfix?: string) => Record<string, string>;

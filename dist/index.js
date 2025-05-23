@@ -4,19 +4,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = preset;
-const config_context_1 = require("./config-context");
+const config_context_1 = require("./helpers/config-context");
 // index.js
 const plugin_1 = __importDefault(require("tailwindcss/plugin"));
-const theme_config_1 = require("./config/theme.config");
-const utils_1 = require("./config/utils");
-const get_font_weight_extend_1 = require("./config/utils/get-font-weight-extend");
+const theme_config_1 = require("./theme.config");
+const helpers_1 = require("./helpers");
+const get_font_weight_extend_1 = require("./helpers/get-font-weight-extend");
 // @ts-ignore
 const tailwindcss_container_queries_1 = __importDefault(require("@phucbm/tailwindcss-container-queries"));
 // @ts-ignore
 const tailwindcss_style_props_1 = __importDefault(require("@phucbm/tailwindcss-style-props"));
 // @ts-ignore
 const tailwindcss_components_1 = __importDefault(require("@phucbm/tailwindcss-components"));
-function preset(config = {}) {
+function preset(config) {
     (0, config_context_1.setConfig)((0, theme_config_1.themeConfigFunc)(config));
     const themeConfig = (0, config_context_1.getConfig)();
     return {
@@ -27,8 +27,8 @@ function preset(config = {}) {
                     lg: themeConfig._container.default,
                 },
             }, extend: {
-                spacing: () => (0, utils_1.getAutoResponsiveBase)("spacing"),
-                fontSize: () => (0, utils_1.getAutoResponsiveBase)("fontSize"),
+                spacing: () => (0, helpers_1.getAutoResponsiveBase)("spacing"),
+                fontSize: () => (0, helpers_1.getAutoResponsiveBase)("fontSize"),
                 fontWeight: () => (0, get_font_weight_extend_1.getFontWeightExtend)(themeConfig),
             } }),
         safelist: [
@@ -42,13 +42,13 @@ function preset(config = {}) {
         plugins: [
             (0, plugin_1.default)(({ addUtilities, addComponents, addVariant, config, theme }) => {
                 const _theme = config().theme;
-                addUtilities((0, utils_1.getCustomCSSVariables)("colors"));
-                addUtilities((0, utils_1.getCustomCSSVariables)("fontSize"));
-                addUtilities((0, utils_1.getCustomCSSVariables)("fontFamily"));
-                addUtilities((0, utils_1.getCustomCSSVariables)("spacing"));
-                addUtilities((0, utils_1.getAutoResponsiveUtilities)("spacing"));
-                addUtilities((0, utils_1.getAutoResponsiveUtilities)("fontSize"));
-                addComponents((0, utils_1.getContainerComponents)(_theme));
+                addUtilities((0, helpers_1.getCustomCSSVariables)("colors"));
+                addUtilities((0, helpers_1.getCustomCSSVariables)("fontSize"));
+                addUtilities((0, helpers_1.getCustomCSSVariables)("fontFamily"));
+                addUtilities((0, helpers_1.getCustomCSSVariables)("spacing"));
+                addUtilities((0, helpers_1.getAutoResponsiveUtilities)("spacing"));
+                addUtilities((0, helpers_1.getAutoResponsiveUtilities)("fontSize"));
+                addComponents((0, helpers_1.getContainerComponents)(_theme));
                 Object.entries(themeConfig._variants).forEach(([key, value]) => {
                     addVariant(key, value.toString());
                 });

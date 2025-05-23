@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAutoResponsiveUtilities = void 0;
 const getVariable_1 = require("../getVariable");
-const config_context_1 = require("../../config-context");
+const config_context_1 = require("./config-context");
 const getAutoResponsiveUtilities = (baseName) => {
     const themeConfig = (0, config_context_1.getConfig)() || {};
     const baseValues = themeConfig[baseName];

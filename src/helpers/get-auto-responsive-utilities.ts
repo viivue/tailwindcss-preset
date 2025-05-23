@@ -1,29 +1,30 @@
 import {getVariable} from "../getVariable";
-import { getConfig } from "../../config-context";
+import { ConfigTypeTheme, ResponsiveType, ScreenConfig, ScreenValue } from "../types/theme-config";
+import { getConfig } from "./config-context";
 
 
 
 export const getAutoResponsiveUtilities = (baseName: string) => {
-    const themeConfig: any = getConfig() || {};
+    const themeConfig: ConfigTypeTheme = getConfig() || {};
 
     const baseValues = themeConfig[baseName];
 
     const responsiveBaseName = baseName[0] === '_' ? `${baseName}Responsive` : `_${baseName}Responsive`;
 
-    const responsive = themeConfig[responsiveBaseName];
+    const responsive: ResponsiveType = themeConfig[responsiveBaseName];
 
     const responsiveOverrides: any = {};
     const appliedOverrides = new Set();
 
     // Sort screen keys by their max value in descending order
-    const sortedScreens = Object.entries(themeConfig.screens)
-        .filter(([, value]: any) => value.max)
-        .sort((a: any, b: any) => parseInt(b[1].max) - parseInt(a[1].max));
+    const sortedScreens: [string, ScreenValue][] = (Object.entries(themeConfig.screens) as [string, ScreenValue][])
+        .filter(([, value]) => value.max)
+        .sort((a: [string, ScreenValue], b: [string, ScreenValue]) => parseInt(b[1].max as string) - parseInt(a[1].max as string));
 
-    sortedScreens.forEach(([screenKey, screen]: any) => {
+    sortedScreens.forEach(([screenKey, screen]) => {
         const responsiveValues = responsive[screenKey];
         if(responsiveValues){
-            const overrides = Object.entries(responsiveValues).reduce((acc: any, [key, value]: any) => {
+            const overrides = Object.entries(responsiveValues).reduce((acc: Record<string, string>, [key, value]: [string, string]) => {
                 const override = `${key}:${value}`;
                 // Only add if the value is different from the default, key/value are different,
                 // and this override hasn't been applied in a larger breakpoint

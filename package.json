@@ -12,7 +12,10 @@
   "author": "Dan",
   "license": "MIT",
   "exports": {
-    ".": "./index.js"
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js"
+    }
   },
   "dependencies": {
     "@phucbm/tailwindcss-components": "^0.1.1",

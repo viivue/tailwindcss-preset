@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSpacing = exports.getFontSize = exports.getVariable = void 0;
 const config_1 = require("./config");
 const spacing_1 = require("./spacing");
-const config_context_1 = require("../config-context");
+const config_context_1 = require("./helpers/config-context");
 const getVariable = (baseName, key) => {
     const themePrefix = (0, config_context_1.getConfig)().prefix || '';
     const propertyName = config_1.configPropertyName[baseName];

@@ -1,3 +1,3 @@
 export declare const getCustomCSSVariables: (baseName: string) => {
-    ':root': any;
+    ':root': Record<string, string>;
 };

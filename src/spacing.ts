@@ -8,7 +8,7 @@
  *
  * If it is required, you can freely update this list.
  */
-export const baseSpacing: any = {
+export const baseSpacing: Record<string, string> = {
     0: "0px",
     1: "1px",
     2: "2px",
@@ -63,7 +63,7 @@ export const baseSpacing: any = {
  * In case you need to, please be aware that you read themeConfig.screens
  */
 // md, sm, xs
-const md = {
+const md: Record<string, string> = {
     0: "0px",
     1: "1px",
     2: "2px",
@@ -103,7 +103,7 @@ const md = {
     184: "128px",
     192: "128px",
 };
-const sm = {
+const sm: Record<string, string> = {
     0: "0px",
     1: "1px",
     2: "2px",
@@ -143,7 +143,7 @@ const sm = {
     184: "80px",
     192: "80px",
 };
-const xs = {
+const xs: Record<string, string> = {
     0: "0px",
     1: "1px",
     2: "2px",
@@ -184,4 +184,4 @@ const xs = {
     192: "60px",
 };
 
-export const responsive = {md, sm, xs}; // do not add more breakpoints, just update values
+export const responsive: Record<string, Record<string, string>> = {md, sm, xs}; // do not add more breakpoints, just update values

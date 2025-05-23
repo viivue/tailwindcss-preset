@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getContainerComponents = void 0;
-const config_context_1 = require("../../config-context");
+const config_context_1 = require("./config-context");
 const getContainerComponents = (theme) => {
     var _a;
     const themePrefix = ((_a = (0, config_context_1.getConfig)()) === null || _a === void 0 ? void 0 : _a.prefix) || "";
-    if (theme._container) {
+    if (theme === null || theme === void 0 ? void 0 : theme._container) {
         const gapSideVar = `--${themePrefix}gap-side`;
         const containerVars = {};
         const containerClass = {};
@@ -19,7 +19,7 @@ const getContainerComponents = (theme) => {
             marginLeft: 'auto',
             marginRight: 'auto',
         };
-        Object.entries(theme._container).forEach(([name, width]) => {
+        Object.entries(theme === null || theme === void 0 ? void 0 : theme._container).forEach(([name, width]) => {
             const postfix = name === 'default' ? '' : `-${name}`;
             const containerVarName = `--${themePrefix}container${postfix}`;
             const gapSide = `clamp(${gapContainer}, (var(--100vw, 100vw) - var(${containerVarName}) - (${gapContainer} * 2)) / 2, 100vw)`;

@@ -1,10 +1,11 @@
-import { getConfig, setConfig } from "./config-context";
+import { getConfig, setConfig } from "./helpers/config-context";
 
 // index.js
 import plugin from "tailwindcss/plugin";
-import { themeConfigFunc } from "./config/theme.config";
-import { getAutoResponsiveBase, getAutoResponsiveUtilities, getContainerComponents, getCustomCSSVariables } from "./config/utils";
-import { getFontWeightExtend } from "./config/utils/get-font-weight-extend";
+import { themeConfigFunc } from "./theme.config";
+import { getAutoResponsiveBase, getAutoResponsiveUtilities, getContainerComponents, getCustomCSSVariables } from "./helpers";
+import { getFontWeightExtend } from "./helpers/get-font-weight-extend";
+import { ConfigType, ConfigTypeTheme } from "./types/theme-config"
 
 // @ts-ignore
 import containerQueries from "@phucbm/tailwindcss-container-queries";
@@ -13,10 +14,10 @@ import styleProps from "@phucbm/tailwindcss-style-props";
 // @ts-ignore
 import components from "@phucbm/tailwindcss-components";
 
-export default function preset(config = {}) {
+export default function preset(config : ConfigType) {
 
   setConfig(themeConfigFunc(config));
-  const themeConfig: any = getConfig();
+  const themeConfig: ConfigTypeTheme = getConfig();
 
   return {
     theme: {

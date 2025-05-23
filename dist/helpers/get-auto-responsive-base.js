@@ -1,10 +1,9 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getAutoResponsiveBase = void 0;
 // import {themeConfig} from "../theme.config.mjs";
-import { getConfig } from "../../config-context";
-import {getVariable} from "../getVariable";
-
-
-
-
+const config_context_1 = require("./config-context");
+const getVariable_1 = require("../getVariable");
 /**
  * Create a set of base tailwind values (for suggestions, completions)
  * These values use custom CSS variables to allow for easy customization
@@ -19,23 +18,20 @@ import {getVariable} from "../getVariable";
  * @param postfix
  * @returns {{}}
  */
-export const getAutoResponsiveBase = (baseName: string, postfix = '') => {
-    const themeConfig: any = getConfig() || {};
+const getAutoResponsiveBase = (baseName, postfix = '') => {
+    const themeConfig = (0, config_context_1.getConfig)() || {};
     const baseValues = themeConfig[baseName];
-    const names: any = {};
-
+    const names = {};
     // each base value will have a responsive variant
-    Object.entries(baseValues).forEach(([key, value] : any) => {
+    Object.entries(baseValues).forEach(([key, value]) => {
         // check if value is raw or reference to a variable
         const isVariable = value.startsWith('var(--');
-
         // if it's a variable, skip
-        if(isVariable){
+        if (isVariable) {
             return;
         }
-
-        names[`responsive-${key}${postfix}`] = `var(${getVariable(baseName, key)})`;
+        names[`responsive-${key}${postfix}`] = `var(${(0, getVariable_1.getVariable)(baseName, key)})`;
     });
-
     return names;
-}
+};
+exports.getAutoResponsiveBase = getAutoResponsiveBase;

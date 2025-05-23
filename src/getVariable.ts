@@ -1,6 +1,6 @@
 import {configPropertyName} from "./config";
 import {baseSpacing} from "./spacing";
-import { getConfig } from "../config-context";
+import { getConfig } from "./helpers/config-context";
 
 export const getVariable = (baseName: string, key: string) => {
     const themePrefix = (getConfig() as any).prefix || '';
