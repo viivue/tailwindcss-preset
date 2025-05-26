@@ -13,8 +13,8 @@
   "license": "MIT",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup",
-    "prepare": "npm run build"
+    "dev": "tsup --watch",
+    "prod": "tsup"
   },
   "dependencies": {
     "@phucbm/tailwindcss-components": "^0.1.1",
