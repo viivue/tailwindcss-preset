@@ -1,16 +1,16 @@
 {
-  "name": "my-tailwind-preset",
+  "name": "@viivue/tailwindcss-preset",
   "version": "1.0.0",
-  "description": "Custom Tailwind CSS preset",
+  "description": "TailwindCSS preset that support CSS variables, responsive pixel-based values, desktop-first, helper components and more.",
   "main": "dist/index.js",
   "type": "module",
   "keywords": [
-    "tailwind",
-    "preset",
-    "tailwindcss"
+    "tailwindcss",
+    "tailwindcss-preset",
+    "viivue"
   ],
-  "author": "Dan",
-  "license": "MIT",
+  "author": "viivue",
+  "license": "MIT *",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup --watch",
