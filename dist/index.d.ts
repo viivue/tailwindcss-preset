@@ -1,5 +1,20 @@
-import { ConfigType } from "./types/theme-config";
-export default function preset(config: ConfigType): {
+import * as tailwindcss_types_config from 'tailwindcss/types/config';
+import { Config } from 'tailwindcss';
+
+type ResponsiveType = {
+    xs?: Record<string, string>;
+    sm?: Record<string, string>;
+    md?: Record<string, string>;
+    [key: string]: Record<string, string>;
+}
+
+interface ConfigType extends Partial<Config> {
+    fontSizeResponsive?: ResponsiveType;
+
+  spacingResponsive?: ResponsiveType;
+}
+
+declare function preset(config: ConfigType): {
     theme: {
         screens: any;
         containers: any;
@@ -12,35 +27,35 @@ export default function preset(config: ConfigType): {
             };
         };
         extend: {
-            spacing: () => Record<string, string>;
-            fontSize: () => Record<string, string>;
-            fontWeight: () => Record<string, string | number>;
+            spacing: () => {};
+            fontSize: () => {};
+            fontWeight: () => {};
         };
         _fontWeight?: Record<string, (string | number)[]>;
         fontFamily?: Record<string, string[]>;
-        fontSizeResponsive?: import("./types/theme-config").ResponsiveType;
-        spacingResponsive?: import("./types/theme-config").ResponsiveType;
-        content?: import("tailwindcss/types/config").ContentConfig | undefined;
-        important?: Partial<import("tailwindcss/types/config").ImportantConfig> | undefined;
+        fontSizeResponsive?: ResponsiveType;
+        spacingResponsive?: ResponsiveType;
+        content?: tailwindcss_types_config.ContentConfig | undefined;
+        important?: Partial<tailwindcss_types_config.ImportantConfig> | undefined;
         prefix?: string | undefined;
         separator?: string | undefined;
-        safelist?: import("tailwindcss/types/config").SafelistConfig[] | undefined;
+        safelist?: tailwindcss_types_config.SafelistConfig[] | undefined;
         blocklist?: string[] | undefined;
-        presets?: Partial<import("tailwindcss/types/config").Config>[] | undefined;
-        future?: Partial<import("tailwindcss/types/config").FutureConfig> | undefined;
-        experimental?: Partial<import("tailwindcss/types/config").ExperimentalConfig> | undefined;
-        darkMode?: Partial<import("tailwindcss/types/config").DarkModeConfig> | undefined;
-        theme?: Partial<import("tailwindcss/types/config").CustomThemeConfig & {
-            extend: Partial<import("tailwindcss/types/config").CustomThemeConfig>;
+        presets?: Partial<tailwindcss_types_config.Config>[] | undefined;
+        future?: Partial<tailwindcss_types_config.FutureConfig> | undefined;
+        experimental?: Partial<tailwindcss_types_config.ExperimentalConfig> | undefined;
+        darkMode?: Partial<tailwindcss_types_config.DarkModeConfig> | undefined;
+        theme?: Partial<tailwindcss_types_config.CustomThemeConfig & {
+            extend: Partial<tailwindcss_types_config.CustomThemeConfig>;
         }> | undefined;
-        corePlugins?: Partial<import("tailwindcss/types/config").CorePluginsConfig> | undefined;
-        plugins?: (import("tailwindcss/types/config").PluginCreator | {
-            handler: import("tailwindcss/types/config").PluginCreator;
-            config?: Partial<import("tailwindcss/types/config").Config> | undefined;
+        corePlugins?: Partial<tailwindcss_types_config.CorePluginsConfig> | undefined;
+        plugins?: (tailwindcss_types_config.PluginCreator | {
+            handler: tailwindcss_types_config.PluginCreator;
+            config?: Partial<tailwindcss_types_config.Config> | undefined;
         } | {
             (options: any): {
-                handler: import("tailwindcss/types/config").PluginCreator;
-                config?: Partial<import("tailwindcss/types/config").Config> | undefined;
+                handler: tailwindcss_types_config.PluginCreator;
+                config?: Partial<tailwindcss_types_config.Config> | undefined;
             };
             __isOptionsFunction: true;
         } | undefined)[] | undefined;
@@ -48,3 +63,5 @@ export default function preset(config: ConfigType): {
     safelist: string[];
     plugins: any[];
 };
+
+export { preset as default };

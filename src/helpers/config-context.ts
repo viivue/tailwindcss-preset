@@ -1,11 +1,11 @@
-import { ConfigType, ConfigTypeTheme } from "../types/theme-config";
+import {ConfigTypeTheme} from "../types/theme-config";
 
 let sharedConfig: ConfigTypeTheme = {};
 
 export function setConfig(config: ConfigTypeTheme) {
-  sharedConfig = config;
+    sharedConfig = config;
 }
 
 export function getConfig() {
-  return sharedConfig;
+    return sharedConfig;
 }
