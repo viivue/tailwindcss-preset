@@ -4,12 +4,14 @@ import pkg from './package.json';
 
 // all tsup options :  https://www.jsdocs.io/package/tsup#Options
 export default defineConfig({
+  name: pkg.name,
   entry: ['src/index.ts'],
   format: ['esm'],
   minify: true,
   outDir: 'dist',
-  target: 'node18',
-  dts: true,
+  target: 'es2024',
+  //   dts : create d.ts file, declaration for typescript
+  // dts: true,
   bundle: true,
   banner: { js: `
   /**
