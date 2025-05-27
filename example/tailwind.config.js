@@ -32,5 +32,5 @@ export default {
         }
     },
 
-  presets: [customPreset()],
+  presets: [customPreset(config)],
 };
