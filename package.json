@@ -14,8 +14,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup --watch",
-    "prod": "tsup",
-    "viewer": "tailwind-config-viewer -o -c example/tailwind.config.js"
+    "prod": "tsup && npm run viewer-export",
+    "viewer": "tailwind-config-viewer -o -c example/tailwind.config.js",
+    "viewer-export": "tailwind-config-viewer -c example/tailwind.config.js export ./docs"
   },
   "dependencies": {
     "@phucbm/tailwindcss-components": "^0.1.1",
