@@ -47,7 +47,7 @@ tailwind-config-viewer -o
 
 📖 See [tailwind-config-viewer](https://github.com/rogden/tailwind-config-viewer)
 
-[View the config of this preset](#)
+[View the config of this preset](https://viivue.github.io/tailwindcss-custom/)
 
 
 ### Use JSON config
