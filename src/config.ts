@@ -1,6 +1,6 @@
 // You don't need to modify this file unless deeper custom is required
 
-export const configPropertyName = {
+export const configPropertyName: any = {
     // use for custom variable
     // --vii-spacing-16
     // --vii-size-16

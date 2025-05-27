@@ -1,4 +1,4 @@
-// You don't need to modify this file unless deeper custom is required
+// You don't need to modify this file unless a deeper custom is required
 
 /**
  * Base spacing
@@ -8,7 +8,7 @@
  *
  * If it is required, you can freely update this list.
  */
-export const baseSpacing = {
+export const baseSpacing: Record<string, string> = {
     0: "0px",
     1: "1px",
     2: "2px",
@@ -50,20 +50,20 @@ export const baseSpacing = {
 };
 
 /**
- * Auto responsive spacings
+ * Auto-responsive spacings
  *
  * A set of CSS variables will be generated from the baseSpacing,
  * then overrides for specific screens using these responsive object below
  *
  * You can update the objects based on your needs.
- * Tailwind will purse the duplicated variables so to easy manage the responsive values,
+ * Tailwind will purse the duplicated variables, so to easily manage the responsive values,
  * you can duplicate the whole object from baseSpacing.
  *
  * It is NOT recommended to add more breakpoints.
- * In case you need to, please be aware that you read themeConfig.screens
+ * In case you need to, please be aware that you read themeConfig. Screens
  */
 // md, sm, xs
-const md = {
+const md: Record<string, string> = {
     0: "0px",
     1: "1px",
     2: "2px",
@@ -103,7 +103,7 @@ const md = {
     184: "128px",
     192: "128px",
 };
-const sm = {
+const sm: Record<string, string> = {
     0: "0px",
     1: "1px",
     2: "2px",
@@ -143,7 +143,7 @@ const sm = {
     184: "80px",
     192: "80px",
 };
-const xs = {
+const xs: Record<string, string> = {
     0: "0px",
     1: "1px",
     2: "2px",
@@ -184,4 +184,4 @@ const xs = {
     192: "60px",
 };
 
-export const responsive = {md, sm, xs}; // do not add more breakpoints, just update values
+export const responsive: Record<string, Record<string, string>> = {md, sm, xs}; // do not add more breakpoints, just update values

@@ -1,13 +1,17 @@
-import { getConfig } from "../../config-context";
+import {CustomThemeConfig} from "tailwindcss/types/config";
+import {getConfig} from "./config-context";
 
+type ThemeType = Partial<CustomThemeConfig & {
+    extend: Partial<CustomThemeConfig>
+}> | undefined;
 
+export const getContainerComponents = (theme: ThemeType) => {
+    const themePrefix: string = getConfig()?.prefix || "";
 
-export const getContainerComponents = (theme) => {
-    const themePrefix = getConfig()?.prefix || "";
-    if(theme._container){
+    if (theme?._container) {
         const gapSideVar = `--${themePrefix}gap-side`;
-        const containerVars = {};
-        const containerClass = {};
+        const containerVars: Record<string, string> = {};
+        const containerClass: any = {};
         const gapContainer = 'theme(space.responsive-gap-container)';
         const containerProps = {
             position: 'relative',
@@ -19,15 +23,15 @@ export const getContainerComponents = (theme) => {
             marginRight: 'auto',
         };
 
-        Object.entries(theme._container).forEach(([name, width]) => {
+        (Object.entries(theme?._container) as [string, string][]).forEach(([name, width]) => {
             const postfix = name === 'default' ? '' : `-${name}`;
-            const containerVarName = `--${themePrefix}container${postfix}`;
+            const containerVarName: string = `--${themePrefix}container${postfix}`;
             const gapSide = `clamp(${gapContainer}, (var(--100vw, 100vw) - var(${containerVarName}) - (${gapContainer} * 2)) / 2, 100vw)`;
 
             containerVars[containerVarName] = width;
             containerVars[`${gapSideVar}${postfix}`] = gapSide;
 
-            if(name !== 'default'){
+            if (name !== 'default') {
                 containerClass[`.container-${name}`] = {
                     ...containerProps,
                     maxWidth: width,

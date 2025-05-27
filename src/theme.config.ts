@@ -1,10 +1,11 @@
-import * as spacing from "./spacing.mjs";
+import * as spacing from "./spacing";
+import { ConfigType } from "./types/theme-config";
 
 /**
  * Tailwind theme config
  */
 
-export const themeConfigFunc = (config) => {
+export const themeConfigFunc = (config: ConfigType) => {
   return {
     backgroundImage: { ...config.backgroundImage },
     colors: { ...config.colors },

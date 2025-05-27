@@ -1,20 +1,23 @@
-import { getConfig, setConfig } from "./config-context";
+import { getConfig, setConfig } from "./helpers/config-context";
 
 // index.js
-const plugin = require("tailwindcss/plugin");
-const { themeConfigFunc } = require("./config/theme.config.mjs");
-const {
-  getAutoResponsiveBase,
-  getAutoResponsiveUtilities,
-  getContainerComponents,
-  getCustomCSSVariables,
-} = require("./config/utils");
-const { getFontWeightExtend } = require("./config/utils/get-font-weight-extend.mjs");
+import plugin from "tailwindcss/plugin";
+import { themeConfigFunc } from "./theme.config";
+import { getAutoResponsiveBase, getAutoResponsiveUtilities, getContainerComponents, getCustomCSSVariables } from "./helpers";
+import { getFontWeightExtend } from "./helpers";
+import { ConfigType, ConfigTypeTheme } from "./types/theme-config"
 
-export default function preset(config = {}) {
+// @ts-ignore
+import containerQueries from "@phucbm/tailwindcss-container-queries";
+// @ts-ignore
+import styleProps from "@phucbm/tailwindcss-style-props";
+// @ts-ignore
+import components from "@phucbm/tailwindcss-components";
+
+export function viivuePreset(config : ConfigType = {}) {
 
   setConfig(themeConfigFunc(config));
-  const themeConfig = getConfig();
+  const themeConfig: ConfigTypeTheme = getConfig();
 
   return {
     theme: {
@@ -48,7 +51,7 @@ export default function preset(config = {}) {
     ],
 
     plugins: [
-      plugin(({ addUtilities, addComponents, addVariant, config, theme }) => {
+      plugin(({ addUtilities, addComponents, addVariant, config }) => {
         const _theme = config().theme;
 
         addUtilities(getCustomCSSVariables("colors"));
@@ -59,16 +62,16 @@ export default function preset(config = {}) {
         addUtilities(getAutoResponsiveUtilities("spacing"));
         addUtilities(getAutoResponsiveUtilities("fontSize"));
 
-        addComponents(getContainerComponents(_theme));
+        addComponents(getContainerComponents(_theme) as any);
 
-        Object.entries(themeConfig._variants).forEach(([key, value]) => {
+        Object.entries(themeConfig._variants).forEach(([key, value] : any) => {
           addVariant(key, value.toString());
         });
       }),
 
-      require("@phucbm/tailwindcss-container-queries"),
-      require("@phucbm/tailwindcss-style-props"),
-      require("@phucbm/tailwindcss-components"),
+      containerQueries,
+      styleProps,
+      components,
     ],
   };
 };
