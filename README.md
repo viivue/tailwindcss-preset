@@ -26,7 +26,7 @@ npm install @viivue/tailwindcss-preset -D
 
 ```js
 // tailwind.config.js or .mjs
-import config from './theme.config.json' assert { type: 'json' };
+import config from './theme.config.json';
 import customPreset from '@viivue/tailwindcss-preset';
 
 export default {
