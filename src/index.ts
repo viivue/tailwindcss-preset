@@ -4,7 +4,7 @@ import { getConfig, setConfig } from "./helpers/config-context";
 import plugin from "tailwindcss/plugin";
 import { themeConfigFunc } from "./theme.config";
 import { getAutoResponsiveBase, getAutoResponsiveUtilities, getContainerComponents, getCustomCSSVariables } from "./helpers";
-import { getFontWeightExtend } from "./helpers/get-font-weight-extend";
+import { getFontWeightExtend } from "./helpers";
 import { ConfigType, ConfigTypeTheme } from "./types/theme-config"
 
 // @ts-ignore
@@ -51,7 +51,7 @@ export default function preset(config : ConfigType = {}) {
     ],
 
     plugins: [
-      plugin(({ addUtilities, addComponents, addVariant, config, theme }) => {
+      plugin(({ addUtilities, addComponents, addVariant, config }) => {
         const _theme = config().theme;
 
         addUtilities(getCustomCSSVariables("colors"));
