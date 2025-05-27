@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 import config from "./theme.config.json" with { type: "json" };
 
-import customPreset from '../dist/index.js';
-// import myTailwindPreset from '@viivue/tailwindcss-preset';
+import { viivuePreset } from '../dist/index.js';
+// import { viivuePreset } from '@viivue/tailwindcss-preset';
 export default {
     content: ['./src/**/*.{html,js}'],
     theme: {
@@ -32,5 +32,5 @@ export default {
         }
     },
 
-  presets: [customPreset(config)],
+  presets: [viivuePreset(config)],
 };
