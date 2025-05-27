@@ -14,7 +14,7 @@ import styleProps from "@phucbm/tailwindcss-style-props";
 // @ts-ignore
 import components from "@phucbm/tailwindcss-components";
 
-export default function preset(config : ConfigType) {
+export default function preset(config : ConfigType = {}) {
 
   setConfig(themeConfigFunc(config));
   const themeConfig: ConfigTypeTheme = getConfig();
