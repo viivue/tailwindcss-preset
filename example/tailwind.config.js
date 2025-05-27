@@ -2,7 +2,7 @@
 import config from "./theme.config.json" with { type: "json" };
 
 import myTailwindPreset from '../dist/index.js';
-// import myTailwindPreset from '@viivue/my-preset-tailwind';
+// import myTailwindPreset from '@viivue/tailwindcss-preset';
 export default {
     content: ['./src/**/*.{html,js}'],
     theme: {
