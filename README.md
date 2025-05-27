@@ -15,7 +15,7 @@ npm i @viivue/tailwindcss-preset -D
 
 2. Add preset to your `tailwind.config.js`
 ```js
-import viivuePreset from '@viivue/tailwindcss-preset';
+import {viivuePreset} from '@viivue/tailwindcss-preset';
 
  /** @type {import('tailwindcss').Config} */
 export default {
@@ -56,7 +56,7 @@ This preset supports to load the tailwind config from a JSON file.
 
 ```js
 import config from './tailwind.config.json';
-import viivuePreset from '@viivue/tailwindcss-preset';
+import {viivuePreset} from '@viivue/tailwindcss-preset';
 
 export default {
   // .. other tailwind configs
