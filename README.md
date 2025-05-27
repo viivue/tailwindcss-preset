@@ -2,6 +2,7 @@
 
 [![release](https://badgen.net/github/release/viivue/easy-tab-accordion/)](https://github.com/viivue/tailwindcss-preset/releases/latest)
 [![license](https://badgen.net/github/license/viivue/easy-tab-accordion/)](https://github.com/viivue/tailwindcss-preset/blob/master/LICENSE)
+[![pages-build-deployment](https://github.com/viivue/tailwindcss-custom/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/viivue/tailwindcss-custom/actions/workflows/pages/pages-build-deployment)
 
 > Tailwind CSS preset by ViiVue that supports CSS variables, pixel-based responsive values, desktop-first breakpoints, helper components, container queries, and more.
 
