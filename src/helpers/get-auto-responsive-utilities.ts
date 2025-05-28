@@ -1,10 +1,10 @@
 import {getVariable} from "./getVariable";
-import {ConfigTypeTheme, ResponsiveType, ScreenValue} from "../types/theme-config";
-import {getConfig} from "./config-context";
+import {ConfigTypeTheme, ResponsiveType, ScreenConfig, ScreenValue} from "../types/theme-config";
+import {getConfigTheme} from "./config-context";
 
 
 export const getAutoResponsiveUtilities = (baseName: string) => {
-    const themeConfig: ConfigTypeTheme = getConfig() || {};
+    const themeConfig: ConfigTypeTheme = getConfigTheme();
 
     const baseValues = themeConfig[baseName];
 
@@ -16,7 +16,7 @@ export const getAutoResponsiveUtilities = (baseName: string) => {
     const appliedOverrides = new Set();
 
     // Sort screen keys by their max value in descending order
-    const sortedScreens: [string, ScreenValue][] = (Object.entries(themeConfig.screens) as [string, ScreenValue][])
+    const sortedScreens: [string, ScreenValue][] = (Object.entries(themeConfig.screens as ScreenConfig) as [string, ScreenValue][])
         .filter(([, value]) => value.max)
         .sort((a: [string, ScreenValue], b: [string, ScreenValue]) => parseInt(b[1].max as string) - parseInt(a[1].max as string));
 
