@@ -18,7 +18,7 @@ import {ConfigTypeTheme} from "../types/theme-config";
  * @returns {{}}
  */
 export const getAutoResponsiveBase = (baseName: string, postfix = ''): {} => {
-    const themeConfig: ConfigTypeTheme = getConfigTheme();
+    const themeConfig: ConfigTypeTheme["theme"] = getConfigTheme();
     const baseValues: Record<string, string> = themeConfig[baseName];
     const names: Record<string, string> = {};
 

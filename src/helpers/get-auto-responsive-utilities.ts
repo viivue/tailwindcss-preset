@@ -4,7 +4,7 @@ import {getConfigTheme} from "./config-context";
 
 
 export const getAutoResponsiveUtilities = (baseName: string) => {
-    const themeConfig: ConfigTypeTheme = getConfigTheme();
+    const themeConfig: ConfigTypeTheme["theme"] = getConfigTheme();
 
     const baseValues = themeConfig[baseName];
 

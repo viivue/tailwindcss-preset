@@ -6,7 +6,7 @@ export function setConfig(config: ConfigTypeTheme) {
     sharedConfig = config;
 }
 
-export function getConfigTheme(): ConfigTypeTheme["theme"] {
+export function getConfigTheme():  NonNullable<ConfigTypeTheme["theme"]> {
     return sharedConfig.theme || {};
 }
 
