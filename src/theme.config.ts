@@ -7,6 +7,7 @@ import { ConfigType } from "./types/theme-config";
 
 export const themeConfigFunc = (config: ConfigType) => {
   return {
+    prefix: config.prefix || "",
     backgroundImage: { ...config.backgroundImage },
     colors: { ...config.colors },
 
