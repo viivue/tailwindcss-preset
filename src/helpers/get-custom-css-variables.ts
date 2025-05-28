@@ -1,15 +1,16 @@
-import {getConfig} from "./config-context";
+import {getConfigTheme} from "./config-context";
 import {getVariable} from "./getVariable";
 import {ConfigTypeTheme} from "../types/theme-config";
 
 
 export const getCustomCSSVariables = (baseName: string) => {
-    const themeConfig: ConfigTypeTheme = getConfig() || {};
+    const themeConfig: ConfigTypeTheme = getConfigTheme();
 
     // Create base variables
     const baseVars: Record<string, string> = {};
     const baseValues: Record<string, string | []> = themeConfig[baseName];
 
+    console.log("baseValues get custom variables", baseValues);
     Object.entries(baseValues).forEach(([key, value]) => {
         if (baseName === 'fontFamily' && Array.isArray(value)) {
             value = value.join(', ');

@@ -1,12 +1,12 @@
 import {CustomThemeConfig} from "tailwindcss/types/config";
-import {getConfig} from "./config-context";
+import {getConfigPrefix} from "./config-context";
 
 type ThemeType = Partial<CustomThemeConfig & {
     extend: Partial<CustomThemeConfig>
 }> | undefined;
 
 export const getContainerComponents = (theme: ThemeType) => {
-    const themePrefix: string = getConfig()?.prefix || "";
+    const themePrefix: string = getConfigPrefix();
 
     if (theme?._container) {
         const gapSideVar = `--${themePrefix}gap-side`;
