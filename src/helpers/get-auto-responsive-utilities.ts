@@ -12,7 +12,7 @@ export const getAutoResponsiveUtilities = (baseName: string) => {
 
     const responsive: ResponsiveType = themeConfig[responsiveBaseName];
 
-    const responsiveOverrides: any = {};
+    const responsiveOverrides: Record<string, Record<string, Record<string, string>>> = {};
     const appliedOverrides = new Set();
 
     // Sort screen keys by their max value in descending order

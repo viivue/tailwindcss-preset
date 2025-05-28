@@ -27,10 +27,10 @@ export function viivuePreset(config: ConfigType = {}) {
             // ...themeConfig,
             backgroundImage: {...config.backgroundImage},
             // screens: themeConfig.screens,
-            screens: { ...config.screens },
+            screens: {...config.screens},
             colors: {...config.colors},
             fontFamily: {...config.fontFamily},
-            containers: { ...config.screens },
+            containers: {...config.screens},
             _fontWeight: {...config.fontWeight},
             fontWeight: {},
             fontSize: {
@@ -57,27 +57,30 @@ export function viivuePreset(config: ConfigType = {}) {
             },
 
             _spacingResponsive: {
-                md: { ...spacing.responsive?.md, ...config.spacingResponsive?.md },
-                sm: { ...spacing.responsive?.sm, ...config.spacingResponsive?.sm },
-                xs: { ...spacing.responsive?.xs, ...config.spacingResponsive?.xs },
+                md: {...spacing.responsive?.md, ...config.spacingResponsive?.md},
+                sm: {...spacing.responsive?.sm, ...config.spacingResponsive?.sm},
+                xs: {...spacing.responsive?.xs, ...config.spacingResponsive?.xs},
             },
 
-            _container: { ...config.container },
+            _container: {...config.container},
 
             container: {
                 center: true,
                 padding: "theme(space.responsive-gap-container)",
                 screens: {
-                    lg: { ...config.container }.default,
+                    lg: {...config.container}.default,
                 },
             },
 
-            _variants: { ...config.variants },
+            _variants: {...config.variants},
 
             extend: {
                 spacing: () => getAutoResponsiveBase("spacing"),
                 fontSize: () => getAutoResponsiveBase("fontSize"),
-                fontWeight: () => getFontWeightExtend({fontFamily: { ...config.fontFamily }, _fontWeight: { ...config.fontWeight },}),
+                fontWeight: () => getFontWeightExtend({
+                    fontFamily: {...config.fontFamily},
+                    _fontWeight: {...config.fontWeight},
+                }),
             },
         },
 
@@ -91,7 +94,7 @@ export function viivuePreset(config: ConfigType = {}) {
         ],
 
         plugins: [
-            plugin(({addUtilities, addComponents, addVariant, config : configPlugin}) => {
+            plugin(({addUtilities, addComponents, addVariant, config: configPlugin}) => {
                 const _theme = configPlugin().theme;
 
                 addUtilities(getCustomCSSVariables("colors"));
@@ -102,9 +105,9 @@ export function viivuePreset(config: ConfigType = {}) {
                 addUtilities(getAutoResponsiveUtilities("spacing"));
                 addUtilities(getAutoResponsiveUtilities("fontSize"));
 
-                addComponents(getContainerComponents(_theme) as any);
+                addComponents(getContainerComponents(_theme));
 
-                Object.entries({ ...config.variants }).forEach(([key, value]: any) => {
+                Object.entries({...config.variants}).forEach(([key, value]: [string, string]) => {
                     addVariant(key, value.toString());
                 });
             }),
