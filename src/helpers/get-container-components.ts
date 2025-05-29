@@ -1,17 +1,18 @@
-import {CustomThemeConfig} from "tailwindcss/types/config";
-import {getConfig} from "./config-context";
+import {CSSRuleObject, CustomThemeConfig} from "tailwindcss/types/config";
+import {getConfigPrefix} from "./config-context";
+
 
 type ThemeType = Partial<CustomThemeConfig & {
     extend: Partial<CustomThemeConfig>
 }> | undefined;
 
-export const getContainerComponents = (theme: ThemeType) => {
-    const themePrefix: string = getConfig()?.prefix || "";
+export const getContainerComponents = (theme: ThemeType): CSSRuleObject | CSSRuleObject[] => {
+    const themePrefix: string = getConfigPrefix();
 
     if (theme?._container) {
         const gapSideVar = `--${themePrefix}gap-side`;
         const containerVars: Record<string, string> = {};
-        const containerClass: any = {};
+        const containerClass: Record<string, Record<string, string>> = {};
         const gapContainer = 'theme(space.responsive-gap-container)';
         const containerProps = {
             position: 'relative',
@@ -52,4 +53,6 @@ export const getContainerComponents = (theme: ThemeType) => {
             ...containerClass
         };
     }
+
+    return {};
 }

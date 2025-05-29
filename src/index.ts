@@ -1,11 +1,15 @@
-import { getConfig, setConfig } from "./helpers/config-context";
+import {setConfig} from "./helpers/config-context";
 
 // index.js
 import plugin from "tailwindcss/plugin";
-import { themeConfigFunc } from "./theme.config";
-import { getAutoResponsiveBase, getAutoResponsiveUtilities, getContainerComponents, getCustomCSSVariables } from "./helpers";
-import { getFontWeightExtend } from "./helpers";
-import { ConfigType, ConfigTypeTheme } from "./types/theme-config"
+import {
+    getAutoResponsiveBase,
+    getAutoResponsiveUtilities,
+    getContainerComponents,
+    getCustomCSSVariables,
+    getFontWeightExtend
+} from "./helpers";
+import {ConfigType, ConfigTypeTheme} from "./types/theme-config"
 
 // @ts-ignore
 import containerQueries from "@phucbm/tailwindcss-container-queries";
@@ -13,65 +17,108 @@ import containerQueries from "@phucbm/tailwindcss-container-queries";
 import styleProps from "@phucbm/tailwindcss-style-props";
 // @ts-ignore
 import components from "@phucbm/tailwindcss-components";
+import * as spacing from "./spacing";
 
-export function viivuePreset(config : ConfigType = {}) {
+export function viivuePreset(config: ConfigType = {}) {
 
-  setConfig(themeConfigFunc(config));
-  const themeConfig: ConfigTypeTheme = getConfig();
+    const _config: ConfigTypeTheme = {
+        theme: {
+            prefix: config.prefix || "",
+            // ...themeConfig,
+            backgroundImage: {...config.backgroundImage},
+            // screens: themeConfig.screens,
+            screens: {...config.screens},
+            colors: {...config.colors},
+            fontFamily: {...config.fontFamily},
+            containers: {...config.screens},
+            _fontWeight: {...config.fontWeight},
+            fontWeight: {},
+            fontSize: {
+                ...config.fontSize,
 
-  return {
-    theme: {
-      ...themeConfig,
-      screens: themeConfig.screens,
-      containers: themeConfig.screens,
-      fontWeight: {},
+                // sample usage with function
+                // body: getFontSize(15),
+            },
+            _fontSizeResponsive: {...config.fontSizeResponsive},
 
-      container: {
-        center: true,
-        padding: "theme(space.responsive-gap-container)",
-        screens: {
-          lg: themeConfig._container.default,
+            spacing: {
+                // Create new spacing
+                // key: value
+
+                // Create new spacing that use auto responsive variable
+                // key: getVar(spacing.baseSpacing["104"])
+
+                // Add base spacings (fixed value)
+                // the list of spacing values can be found in presets/spacing.mjs
+                // we manage the spacing values in another file as it can be quite long
+                ...spacing.baseSpacing,
+
+                ...config.spacing,
+            },
+
+            _spacingResponsive: {
+                md: {...spacing.responsive?.md, ...config.spacingResponsive?.md},
+                sm: {...spacing.responsive?.sm, ...config.spacingResponsive?.sm},
+                xs: {...spacing.responsive?.xs, ...config.spacingResponsive?.xs},
+            },
+
+            _container: {...config.container},
+
+            container: {
+                center: true,
+                padding: "theme(space.responsive-gap-container)",
+                screens: {
+                    lg: {...config.container}.default,
+                },
+            },
+
+            _variants: {...config.variants},
+
+            extend: {
+                spacing: () => getAutoResponsiveBase("spacing"),
+                fontSize: () => getAutoResponsiveBase("fontSize"),
+                fontWeight: () => getFontWeightExtend({
+                    fontFamily: {...config.fontFamily},
+                    _fontWeight: {...config.fontWeight},
+                }),
+            },
         },
-      },
 
-      extend: {
-        spacing: () => getAutoResponsiveBase("spacing"),
-        fontSize: () => getAutoResponsiveBase("fontSize"),
-        fontWeight: () => getFontWeightExtend(themeConfig),
-      },
-    },
+        safelist: [
+            "container",
+            "container-small",
+            "container-fluid",
+            "loading",
+            "overscroll-y-none",
+            "sr-only",
+        ],
 
-    safelist: [
-      "container",
-      "container-small",
-      "container-fluid",
-      "loading",
-      "overscroll-y-none",
-      "sr-only",
-    ],
+        plugins: [
+            plugin(({addUtilities, addComponents, addVariant, config: configPlugin}) => {
+                const _theme = configPlugin().theme;
 
-    plugins: [
-      plugin(({ addUtilities, addComponents, addVariant, config }) => {
-        const _theme = config().theme;
+                addUtilities(getCustomCSSVariables("colors"));
+                addUtilities(getCustomCSSVariables("fontSize"));
+                addUtilities(getCustomCSSVariables("fontFamily"));
+                addUtilities(getCustomCSSVariables("spacing"));
 
-        addUtilities(getCustomCSSVariables("colors"));
-        addUtilities(getCustomCSSVariables("fontSize"));
-        addUtilities(getCustomCSSVariables("fontFamily"));
-        addUtilities(getCustomCSSVariables("spacing"));
+                addUtilities(getAutoResponsiveUtilities("spacing"));
+                addUtilities(getAutoResponsiveUtilities("fontSize"));
 
-        addUtilities(getAutoResponsiveUtilities("spacing"));
-        addUtilities(getAutoResponsiveUtilities("fontSize"));
+                addComponents(getContainerComponents(_theme));
 
-        addComponents(getContainerComponents(_theme) as any);
+                Object.entries({...config.variants}).forEach(([key, value]: [string, string]) => {
+                    addVariant(key, value.toString());
+                });
+            }),
 
-        Object.entries(themeConfig._variants).forEach(([key, value] : any) => {
-          addVariant(key, value.toString());
-        });
-      }),
+            containerQueries,
+            styleProps,
+            components,
+        ],
+    };
 
-      containerQueries,
-      styleProps,
-      components,
-    ],
-  };
-};
+    setConfig(_config);
+
+    return _config;
+}

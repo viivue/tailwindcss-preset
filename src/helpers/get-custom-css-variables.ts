@@ -1,10 +1,10 @@
-import {getConfig} from "./config-context";
+import {getConfigTheme} from "./config-context";
 import {getVariable} from "./getVariable";
 import {ConfigTypeTheme} from "../types/theme-config";
 
 
 export const getCustomCSSVariables = (baseName: string) => {
-    const themeConfig: ConfigTypeTheme = getConfig() || {};
+    const themeConfig: ConfigTypeTheme["theme"] = getConfigTheme();
 
     // Create base variables
     const baseVars: Record<string, string> = {};

@@ -6,6 +6,10 @@ export function setConfig(config: ConfigTypeTheme) {
     sharedConfig = config;
 }
 
-export function getConfig() {
-    return sharedConfig;
+export function getConfigTheme(): NonNullable<ConfigTypeTheme["theme"]> {
+    return sharedConfig.theme || {};
+}
+
+export function getConfigPrefix(): string {
+    return getConfigTheme()?.prefix || '';
 }

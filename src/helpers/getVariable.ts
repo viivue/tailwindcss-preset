@@ -1,8 +1,8 @@
 import {configPropertyName} from "../config";
-import {getConfig} from "./config-context";
+import {getConfigPrefix} from "./config-context";
 
 export const getVariable = (baseName: string, key: string) => {
-    const themePrefix = (getConfig() as any).prefix || '';
+    const themePrefix = getConfigPrefix();
 
     const propertyName = configPropertyName[baseName];
 
