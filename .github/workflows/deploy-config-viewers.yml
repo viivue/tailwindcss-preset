@@ -1,4 +1,4 @@
-name: Docs Deploy
+name: Deploy Tailwind Config
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy docs site
+    name: Deploy Tailwind Config
     runs-on: ubuntu-latest
 
     steps:
@@ -20,14 +20,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build docs
+      - name: Build Tailwind Config
         run: npm run viewer-export
 
-      - name: Deploy docs page
+      - name: Deploy Tailwind Config
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./
           publish_branch: docs
           # The following lines assign commit authorship to the official
           # GH-Actions bot for deploys to `gh-pages` branch:
