@@ -1,7 +1,7 @@
 {
   "name": "@viivue/tailwindcss-preset",
   "version": "1.0.0",
-  "description": "TailwindCSS preset that support CSS variables, responsive pixel-based values, desktop-first, helper components and more.",
+  "description": "TailwindCSS preset that supports CSS variables, responsive pixel-based values, desktop-first, helper components and more.",
   "main": "dist/index.js",
   "type": "module",
   "keywords": [
@@ -9,8 +9,14 @@
     "tailwindcss-preset",
     "viivue"
   ],
+  "files": [
+    "dist",
+    "example",
+    "README.md",
+    "LICENSE"
+  ],
   "author": "viivue",
-  "license": "MIT *",
+  "license": "MIT",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup --watch",
