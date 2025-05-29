@@ -1,6 +1,7 @@
 # @viivue/tailwindcss-preset
 
 [![release](https://badgen.net/github/release/viivue/tailwindcss-preset/)](https://github.com/viivue/tailwindcss-preset/releases/latest)
+[![npm](https://badgen.net/npm/v/@viivue/tailwindcss-preset)](https://www.npmjs.com/package/@viivue/tailwindcss-preset)
 [![license](https://badgen.net/github/license/viivue/tailwindcss-preset/)](https://github.com/viivue/tailwindcss-preset/blob/master/LICENSE)
 [![pages-build-deployment](https://github.com/viivue/tailwindcss-preset/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/viivue/tailwindcss-preset/actions/workflows/pages/pages-build-deployment)
 
